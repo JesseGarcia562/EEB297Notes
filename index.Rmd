@@ -1,0 +1,24 @@
+--- 
+title: "EEB 297: Population genomics of structural variants and transposable elements"
+author: "Jesse Garcia"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is my study guide for the class EEB 297 and its associated articles"
+---
+
+# Description
+
+This is my study guide for the class EEB 297 and its associated articles.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
