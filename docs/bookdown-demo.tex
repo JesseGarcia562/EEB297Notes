@@ -1,0 +1,729 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={EEB 297: Population genomics of structural variants and transposable elements},
+            pdfauthor={Jesse Garcia},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{EEB 297: Population genomics of structural variants and transposable elements}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Jesse Garcia}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-01-14}
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{description}{%
+\chapter{Description}\label{description}}
+
+This is my study guide for the class EEB 297 and its associated articles.
+
+\hypertarget{week2}{%
+\chapter{Week 2 Biology of CNVs \& CNVs in Drosophila}\label{week2}}
+
+\hypertarget{hastings-et-al.mechanisms-of-change-in-gene-copy-number-2009-nat-rev-genet}{%
+\section{Hastings et al.~Mechanisms of change in gene copy number (2009) Nat Rev Genet}\label{hastings-et-al.mechanisms-of-change-in-gene-copy-number-2009-nat-rev-genet}}
+
+\hypertarget{abstract}{%
+\subsection{Abstract}\label{abstract}}
+
+\begin{itemize}
+\tightlist
+\item
+  Deletions and duplications underlie human phenotypes and form at rates much bigger than other kinds of mutations
+\item
+  Repair of broken replication forks might promote CNV production
+\end{itemize}
+
+\hypertarget{introduction}{%
+\subsubsection{Introduction}\label{introduction}}
+
+\begin{itemize}
+\tightlist
+\item
+  (Somatic/Meiotically Generated) Identical twins differ in CNV and different organs and tissues vary in copy number in the same individual (Woah)
+\item
+  CNV is at LEAST as important in the differences between humans as SNPs
+\item
+  Can change protein structure
+\item
+  CNV variation is disadvantageous and incolved in cancer formation and progression. Contributes to cancer proneness
+\item
+  \emph{Question}: Wouldn't this be adaptive for the cancer cells and not necessairly deleterious?
+\item
+  Although we are looking at other species, it is probably ok to extrapolate what we get from bacteria
+\end{itemize}
+
+\hypertarget{characteristics-of-copy-number-variants}{%
+\subsubsection{Characteristics of copy number variants}\label{characteristics-of-copy-number-variants}}
+
+\begin{itemize}
+\tightlist
+\item
+  Change in copy number == change in chromosome structure
+\item
+  Low Copy Repeats (LCRs): recurrent CNVs whose end-points are confined to few genomic positions
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Probably come from homologous recombination between repeated sequences
+  \end{itemize}
+\item
+  \emph{Question} Paragraph 2: ``Most non-recurrent CNVs occur at sites of very limited homology of 2 to 15 base pairs (bp)''
+
+  \begin{itemize}
+  \tightlist
+  \item
+    How do you measure homology within yourself?
+  \end{itemize}
+\item
+  Recurrent CNVs
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Short
+  \item
+    Tend to be in regions where LCRs (recurrent CNVs) are
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{mechanisms-of-structural-change}{%
+\subsubsection{Mechanisms of structural change}\label{mechanisms-of-structural-change}}
+
+\begin{itemize}
+\tightlist
+\item
+  Mechansims of all structural changes are the same as those that cause CNV
+\item
+  Homologous Recombination (HR) requires \emph{extensive sequence identity} (to what? sister chromatid?)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Important in accurate DNA repair
+  \item
+    HR causes CNVs not because the mechanism is inaccurate, but because genomes have tracts of low copy repeats or segmental dupplications
+  \end{itemize}
+\item
+  Rad51: Strand exchange protein important in most homologous recombination
+\item
+  Nonhomology: use only ``microhomology'' of a few bases or no homology
+\item
+  NAHR: Non-allelic or ectopic homologous recombination
+
+  \begin{itemize}
+  \tightlist
+  \item
+    when a damaged sequence is repaired by a homologous sequence in different chromosomal positions
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homologous-recombination-mechanisms}{%
+\subsubsection{Homologous recombination mechanisms}\label{homologous-recombination-mechanisms}}
+
+\begin{itemize}
+\tightlist
+\item
+  Homologous recombination underlies many DNA repair processes.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    repair of dna breaks and gaps
+  \item
+    DSB: double-strand break induced recombination
+    -Spontaneous mitotic recombination is probably initionated by single strand DNA gaps
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{double-holliday-junction-and-synthesis-dependent-strand-annealing-models-of-double-strand-break-repair}{%
+\paragraph{Double Holliday junction and synthesis-dependent strand annealing models of double-strand break repair}\label{double-holliday-junction-and-synthesis-dependent-strand-annealing-models-of-double-strand-break-repair}}
+
+\begin{itemize}
+\tightlist
+\item
+  Holliday junction Double strand break repair is a mechanism that can lead to gene converseion and crossing over,
+\item
+  Synthesis-dependent strand-annealing (SDSA)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    does not generate crossovers
+  \item
+    mechanism for avoiding crossing-over, and loss of Heterozygosity (\emph{Question}: Would LOH events contribute to ROH computations?)
+  \item
+    can still produce CNVs
+  \end{itemize}
+\item
+  If chromatids carrying the same allele segregate together at mitosis then you can get LOH
+\item
+  Repeats can cause NAHR (non-allelic or ectopic homologous recombination)
+\item
+  \emph{Question}: What's a vegetative cell?
+\item
+  Length of repeats might affect probability of Homologuous recombination which. Too short==Less HR because of physical constraints of loop
+\item
+  Break Induced Replication (BIR) Homologous recombination is also used to repair collapsed/broken replication forks
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Can induce LOH if uses homologu instead of sister chromatid
+  \item
+    suggested major mechanism for change in copy number
+  \item
+    Can cause small deletions
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{correct-choice-of-recombination-partner-prevents-chromosomal-structural-change}{%
+\paragraph{Correct choice of recombination partner prevents chromosomal structural change}\label{correct-choice-of-recombination-partner-prevents-chromosomal-structural-change}}
+
+\begin{itemize}
+\tightlist
+\item
+  Just don't pick a nonallelic partner for repair and you might be ok
+\item
+  MutS and MutL work together to undo base-paired DNA molecules that are imperfectly matched
+\item
+  Homeologous Sequenced: Sequences that share less than about 95\% identity.
+\item
+  Cohesins are porteins that literaly bind two sister chromatids together
+
+  \begin{itemize}
+  \tightlist
+  \item
+    loss of cohesion may induce copy number change at other loci
+  \end{itemize}
+\item
+  Proteins even hold ends of a single Double strand break together
+\item
+  Homologous recombination is dope for repair but can cause CNVS.
+\end{itemize}
+
+\hypertarget{nonhomologous-repair}{%
+\subsubsection{Nonhomologous repair}\label{nonhomologous-repair}}
+
+\begin{itemize}
+\tightlist
+\item
+  Mechanisms of DNA repair that use very limited of NO homology.
+\item
+  Can cause CNVs
+\item
+  Two type: replicative and non-replicative mechansims
+\end{itemize}
+
+\hypertarget{nonhomologous-repair-non-replicative-mechanisms}{%
+\subsubsection{Nonhomologous repair: non-replicative mechanisms}\label{nonhomologous-repair-non-replicative-mechanisms}}
+
+\hypertarget{nonhomologous-end-joining}{%
+\paragraph{Nonhomologous end joining}\label{nonhomologous-end-joining}}
+
+\begin{itemize}
+\tightlist
+\item
+  Two pathways of Double strand break repair that do not require homology/verrry short microhomologies for repair
+\item
+  Nonhomologous end joining (NHEJ)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    NHEJ rejoins DSB ends accurately or leads to small 1-4 bp deletions, and also in some cases to insertion of free DNA, often from mitochondria or retrotransposons
+  \item
+    \emph{Question}: What is free DNA?
+  \end{itemize}
+\item
+  Microhomology-mediated end joining (MMEG)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    uses 5 to 25 bp long homologies to anneal to ends of double strand breaks and, leads to deletions of sequences between annealed microhomologies.
+  \end{itemize}
+\item
+  Likely to cause some chromosomal rearrangement by joining nonhomologus sequences
+\end{itemize}
+
+\hypertarget{breakage-fusion-bridge-cycle}{%
+\paragraph{Breakage-fusion-bridge cycle}\label{breakage-fusion-bridge-cycle}}
+
+\begin{itemize}
+\tightlist
+\item
+  If a chromosome loses its telomere due to a double strand break, there will be two sister chromatids that lack telomeres (during replication)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sister chromatids that lack telomeres will fuse, creating a diecentric chromosome
+  \item
+    The fused chromosomes will be ripped appart during anaphase
+  \item
+    this will happen over and over again
+  \item
+    will lead to large inverted duplications/repeats
+  \item
+    seen a lot in cancer
+  \item
+    Barbara McClintock proposed this!
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{nonhomologous-repair-replicative-mechanisms}{%
+\subsubsection{Nonhomologous repair: replicative mechanisms}\label{nonhomologous-repair-replicative-mechanisms}}
+
+\begin{itemize}
+\tightlist
+\item
+  If you see microhomology at a site of nonhomologous recombination its probably because of non-homologous end joining this CNV was created
+\item
+  However, this might be a consequence instead of DNA replication, and Break induced repair instead of NHEj
+\item
+  Replicative stree might induce CNV
+\item
+  Aphidicolin: inhibitor of replicative DNA polymerases induces CNVs
+\item
+  This suggests that replication can cause CNVs
+\item
+  You see little homolgoy at these endpoints, suggests NOT HR
+\end{itemize}
+
+\hypertarget{replication-slippage-or-template-switching}{%
+\paragraph{Replication slippage or template switching}\label{replication-slippage-or-template-switching}}
+
+\begin{itemize}
+\tightlist
+\item
+  Single-stranded sequences that appear during replication (think Okazaki fragments) are often deleted or duplicated
+\end{itemize}
+
+\hypertarget{fork-stalling-and-template-switching}{%
+\paragraph{Fork stalling and template switching}\label{fork-stalling-and-template-switching}}
+
+\begin{itemize}
+\tightlist
+\item
+  During replication, forks can be stalled and the 3' primer end uses a single-stranded DNA template of another replication fork
+\item
+  Microhomology suggest that Homologous recombination is not involved
+\item
+  They messed with the concentraion of certain exoncucleases and were able to find out which exonucleases involved
+\end{itemize}
+
+\hypertarget{microhomology-mediated-break-induced-replication}{%
+\subsubsection{Microhomology-mediated break-induced replication}\label{microhomology-mediated-break-induced-replication}}
+
+\begin{itemize}
+\tightlist
+\item
+  Break induced replication can be mediated by microhomology
+\item
+  Pol32 which is a non-essential DNA polymerase is needed for Break induced replication
+\item
+  Some author suggest that this probably causes non-recurrent copy number changes in human
+\item
+  This author disagrees
+\end{itemize}
+
+\hypertarget{effects-of-chromosome-architecture-on-cnv}{%
+\subsection{Effects of chromosome architecture on CNV}\label{effects-of-chromosome-architecture-on-cnv}}
+
+\begin{itemize}
+\tightlist
+\item
+  CNVs are not randomly distributed in the human genome
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Clustered in regions of complex genomic architecture
+  \item
+    Complex patterns of direct/inverted Low copy repeats
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Can cause for stalling in DNA replication
+    \end{itemize}
+  \item
+    heterochromatin near telomeres/centromeres
+  \item
+    replication origins and terminators
+  \item
+    scaffold attachment sequences
+  \item
+    occurence of nonrecurrent changes in regions carrying multiple LCRs
+  \item
+    inverted repeats and palindromic sequences
+  \item
+    highly repeated sequences
+  \item
+    LINEs \& SINE
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Cause CNV by Non-allelic or ectopic homologous recombination
+    \end{itemize}
+  \item
+    non-B conformation able DNA
+  \item
+    specific consensus sequences associated with CNVs
+  \end{itemize}
+\item
+  \emph{THEME}: Multiple genomic features can affect the probability of their occurence
+  -\emph{Question}: What are the genomic features that can affect the probability of SNPs?
+\end{itemize}
+
+\hypertarget{conclusions-and-ramifications}{%
+\subsection{Conclusions and ramifications}\label{conclusions-and-ramifications}}
+
+\begin{itemize}
+\tightlist
+\item
+  At least two mechanisms for change in copy number
+  -Non-allelic homologous recombination
+  -Formed by classical HR-mediated Double strand break repair via a double holliday junction
+  -Restarts broken replication forks by Homologous recombination
+  -Microhomology-mediated events
+
+  \begin{itemize}
+  \tightlist
+  \item
+    underlie most copy-number change
+    -Breakage-fusion-bridge cycle operates and mayber importanin in amplification in some cancers
+  \end{itemize}
+\item
+  Don't think that only one mechanism causes one event. There's mediation/interference/synergy in these methods
+\item
+  CNV could stem from stress reponse.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``evolvability''
+  \item
+    stressed cells can fuel CNV formation and therefore genetic diversity upon which natural selection acts
+  \end{itemize}
+\item
+  Cancer cells loss of heterozygosity drives tumor progression and resistance to therapies
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Question}: Cancer cell with runs of homozygosity will be more fit than other cells?
+  \end{itemize}
+\item
+  Probably variants associated with CNVs
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Question}: Can we do a GWAS on the phenotype: Total Length of Genome in Run of homoszygosity
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{emerson-et-al.natural-selection-shapes-genome-wide-patterns-of-copy-number-polymorphism-in-drosophila-melanogaster.-2008-science}{%
+\section{Emerson et al.~Natural Selection Shapes Genome-Wide Patterns of Copy-Number Polymorphism in Drosophila melanogaster. (2008) Science}\label{emerson-et-al.natural-selection-shapes-genome-wide-patterns-of-copy-number-polymorphism-in-drosophila-melanogaster.-2008-science}}
+
+\hypertarget{abstract-1}{%
+\subsection{Abstract}\label{abstract-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  We don't really know how selection affects the distribution/density of CNVs.
+\item
+  This paper identifies CNP (copy-number polymorphisms) in Drosphila and concludes that the locations and frequencies of CNPs are shaped by purifying selection
+\item
+  \emph{Strength of Purifying Selection}: Deletions \textgreater{} Duplications. Exon and Intron overlapping duplications and X chromosome duplications \textgreater{} random duplication
+\end{itemize}
+
+\hypertarget{paragraph-1}{%
+\subsubsection{Paragraph 1}\label{paragraph-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  ``CNPs can create new genes, change gene dosage, reshape gene structures, and/or modify the elements that regulate gene expression, understanding their evolution is at the very heart of understanding how such structural changes in the genome contribute to the phenotypic evolution of organisms''
+\end{itemize}
+
+\hypertarget{paragraph-2}{%
+\subsubsection{Paragraph 2}\label{paragraph-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Identify CNPs with a custom tiling array and use a HMM trained on a data from a line known to contain specific CNPs.
+\end{itemize}
+
+\hypertarget{paragraph-3}{%
+\subsubsection{Paragraph 3}\label{paragraph-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  They validated their model with wet-lab procedures.
+\item
+  Deletions have a relatively high false-ositive rate (47\%) because deletions are often near SNPs. This leads to DNA not binding well to the arrays
+  \_ \emph{Question}: Wonder what they'd estimate their positve-predictive value to be?
+\end{itemize}
+
+\hypertarget{paragraph-4}{%
+\subsubsection{Paragraph 4}\label{paragraph-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  They compare predicted and ``true'' boundaries of CNPs and claim their model can detect small CNPs and estaimate CNP boundaries with precision
+\item
+  They detect a lot more CNPs than in human with a smaller genome/sample size.
+\item
+  Human CNPs might include a class that are larger than \emph{anything} found in drosophila. Current studies are missing small-scale variations.
+\end{itemize}
+
+\hypertarget{paragraph-5}{%
+\subsubsection{Paragraph 5:}\label{paragraph-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  Duplications outnumbered deletions 2.5:1 (Sign test P value \textless{}2.22 × 10--16; Fig. 1) and were significantly larger (Wilcoxon rank sum test, P value \textless{}2.22 × 10--16; Table 1).
+\item
+  Nonallelic homologous recombination should either generate a 1:! ratio of Duplications:Deletions OR more deletions than duplications.
+\item
+  There is deletion bias.
+\item
+  Suggests that a large proportion of deletions are removed from the population by purifying selection. In this context, the dearth of deletions observed in our data, as well as the smaller size of the deleted variants, suggest that they are far more deleterious than duplications and that larger mutations are more deleterious than smaller ones.
+\item
+  Deletions == More Deleterious. Larger Mutations More Deleterious than small ones.
+\end{itemize}
+
+\hypertarget{paragraph-6}{%
+\subsubsection{Paragraph 6:}\label{paragraph-6}}
+
+\begin{itemize}
+\tightlist
+\item
+  Every region of the genome harbors at least low levels of CNPs. The median distance between two events was 12.6 kb (fig. S5).
+\item
+  Pericentromeric regions were enriched in duplications, though not in deletions (fig. S5)
+\item
+  Pericentromeric regions are also characterized by extremely low rates of crossing-over, leading to a lower effective population size as a result of linkage (14). Therefore, the higher density of CNPs observed in these regions may be a consequence of the reduced effectiveness of selection in purging deleterious mutations (14). Alternatively, the mutation rate may simply be higher in such regions (15).
+\item
+  My favorite paragraph so far
+\item
+  \emph{Question}: Didn't they design the tiling array? So the median distance/density is biased by themselves?
+\item
+  \emph{Questions}: Positive selection/interference could also cause these high density of enrichment of duplications?
+\end{itemize}
+
+\hypertarget{paragraph-7}{%
+\subsubsection{Paragraph 7:}\label{paragraph-7}}
+
+\begin{itemize}
+\tightlist
+\item
+  More duplications in general in all categories of the genome
+\item
+  Deletions relatively deleted in coding regions
+\end{itemize}
+
+\hypertarget{paragraph-8}{%
+\subsubsection{Paragraph 8:}\label{paragraph-8}}
+
+\begin{itemize}
+\tightlist
+\item
+  8\% of genes partially duplicated
+\item
+  2\% of genes partially deleted
+\item
+  Transposable elements and CNPs are arranged similarly with respect to the ends of genes
+\end{itemize}
+
+\hypertarget{paragraph-9}{%
+\subsubsection{Paragraph 9:}\label{paragraph-9}}
+
+\begin{itemize}
+\tightlist
+\item
+  Estimated demographic parameters, then used the parameters to not reject the standard neutral model, then estimated selection coefficients
+\end{itemize}
+
+\hypertarget{paragraph-10}{%
+\subsubsection{Paragraph 10:}\label{paragraph-10}}
+
+\begin{itemize}
+\tightlist
+\item
+  Notably, selection differentially influenced CNP evolution among different genomic features as well as among different chromosomes. We compared the patterns of variation between the different classes of variants: both correcting for bias and error and with no corrections.
+\item
+  Intronic is the most deleterious (splicing?)
+\end{itemize}
+
+\hypertarget{paragraph-11}{%
+\subsubsection{Paragraph 11:}\label{paragraph-11}}
+
+\begin{itemize}
+\tightlist
+\item
+  Fail to reject neutrality for complete gene duplications
+\end{itemize}
+
+\hypertarget{paragraph-12}{%
+\subsubsection{Paragraph 12:}\label{paragraph-12}}
+
+\begin{itemize}
+\tightlist
+\item
+  We also found that the autosomes have higher selection coefficients (less deleterious) than the X chromosome (Fig. 2). This observation is compatible with the following models:
+
+  \begin{itemize}
+  \item
+    \begin{enumerate}
+    \def\labelenumi{\arabic{enumi}.}
+    \tightlist
+    \item
+      Duplicate mutations on the X chromosome are more deleterious than those on autosomes (X-linked genes may be more sensitive to changes in dosage)\\
+    \end{enumerate}
+  \item
+    \begin{enumerate}
+    \def\labelenumi{\arabic{enumi}.}
+    \setcounter{enumi}{1}
+    \tightlist
+    \item
+      Duplicate polymorphisms tend to be slightly deleterious and recessive
+    \end{enumerate}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{paragraph-13}{%
+\subsubsection{Paragraph 13:}\label{paragraph-13}}
+
+\begin{itemize}
+\tightlist
+\item
+  Genes overlapping toxin respones and known to be under positive selection because of increased rates of gene expression
+\end{itemize}
+
+\hypertarget{paragraph-14}{%
+\subsubsection{Paragraph 14:}\label{paragraph-14}}
+
+\begin{itemize}
+\tightlist
+\item
+  CNPs are distributed by natural selection
+\end{itemize}
+
+\hypertarget{week-3}{%
+\chapter{Week 3}\label{week-3}}
+
+\hypertarget{week-4}{%
+\chapter{Week 4}\label{week-4}}
+
+\hypertarget{week-5}{%
+\chapter{Week 5}\label{week-5}}
+
+\hypertarget{week-6}{%
+\chapter{Week 6}\label{week-6}}
+
+\bibliography{book.bib,packages.bib}
+
+
+\end{document}
