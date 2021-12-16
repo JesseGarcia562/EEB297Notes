@@ -1,3 +1,7 @@
 `r if (knitr:::is_html_output()) '
 # References {-}
+
+Hastings, P., Lupski, J., Rosenberg, S. et al. Mechanisms of change in gene copy number. Nat Rev Genet 10, 551–564 (2009). https://doi.org/10.1038/nrg2593
+
+Emerson, J. J., et al. “Natural Selection Shapes Genome-Wide Patterns of Copy-Number Polymorphism in Drosophila Melanogaster.” Science, Science, 20 June 2008.
 '`
